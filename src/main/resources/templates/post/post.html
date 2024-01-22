@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+테스트
+<hr>
+<hr>
+<table border="1">
+    <td>id</td>
+    <td>title</td>
+    <td>content</td>
+    <tr th:each="postList : ${postList}">
+        <td th:text="${postList.getPostNum()}"></td>
+        <td th:text="${postList.getTitle()}"></td>
+        <td th:text="${postList.getPostNum()}"></td>
+    </tr>
+</table>
+<hr>
+</body>
+</html>
