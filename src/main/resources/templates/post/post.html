@@ -5,17 +5,19 @@
     <title>Title</title>
 </head>
 <body>
-테스트
-<hr>
+글 작성 테스트
+
 <hr>
 <table border="1">
-    <td>id</td>
-    <td>title</td>
-    <td>content</td>
+    <td>글 번호</td>
+    <td>제목</td>
+    <td>내용</td>
+    <td>작성시간</td>
     <tr th:each="postList : ${postList}">
         <td th:text="${postList.getPostNum()}"></td>
         <td th:text="${postList.getTitle()}"></td>
-        <td th:text="${postList.getPostNum()}"></td>
+        <td th:text="${postList.getContent()}"></td>
+        <td th:text="${postList.getCreateTime()}"></td>
     </tr>
 </table>
 <hr>

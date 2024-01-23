@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+글 작성 페이지
+<hr>
+
+
+<form th:action="@{/postCreate}" th:object="${postCreate}" method="post">
+    <!-- 폼 필드와 Thymeleaf의 th:field를 사용하여 데이터 바인딩 -->
+
+    글 제목 : <input type="text" th:field="*{title}"><br>
+    내용 : <input type="text" th:field="*{content}"><br>
+
+    <button type="submit">작성</button>
+</form>
+</body>
+</html>
