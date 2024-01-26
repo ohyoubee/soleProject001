@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -40,11 +41,16 @@ public class PostController {
         postService.postCreate(postDTO);
         return "redirect:/post" ;
     }
-//    @GetMapping("/postView/{postNum}")
-//    public String postView(@PathVariable("postNum")Integer postNum , Model model){
-//        Post post = postService.findById(postNum);
-//        model.addAttribute("postView",post);
-//        return "/post/postView";
-//    }
+    @GetMapping("/postView/{postNum}")
+    public String postView(@PathVariable("postNum") Integer postNum, Model model) {
+        // postNum에 해당하는 포스트 정보를 찾습니다.
+        Optional<Post> postOptional = postService.findById(postNum);
+
+        // 포스트가 존재하면 모델에 추가하여 postView.html로 전달합니다.
+        postOptional.ifPresent(post -> model.addAttribute("post", post));
+
+        return "/post/postView";
+    }
+
 }
 

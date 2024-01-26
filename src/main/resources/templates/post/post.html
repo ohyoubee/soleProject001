@@ -9,17 +9,22 @@
 
 <hr>
 <table border="1">
-    <td>글 번호</td>
-    <td>제목</td>
-    <td>내용</td>
-    <td>작성시간</td>
-    <tr th:each="postList : ${postList}">
-        <td th:text="${postList.getPostNum()}"></td>
-        <td th:text="${postList.getTitle()}"></td>
-        <td th:text="${postList.getContent()}"></td>
-        <td th:text="${postList.getCreateTime()}"></td>
+    <tr>
+        <td>글 번호</td>
+        <td>제목</td>
+<!--        <td>내용</td>-->
+        <td>작성시간</td>
     </tr>
+    <tr th:each="post : ${postList}">
+        <td th:text="${post.getPostNum()}"></td>
+        <!-- 포스트 제목에 링크를 추가합니다 -->
+        <td><a th:href="@{/postView/{postNum}(postNum=${post.getPostNum()})}" th:text="${post.getTitle()}"></a></td>
+<!--        <td th:text="${post.getContent()}"></td>-->
+        <td th:text="${post.getCreateTime()}"></td>
+    </tr>
+
 </table>
+
 <hr>
 </body>
 </html>

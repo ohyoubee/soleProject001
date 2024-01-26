@@ -4,9 +4,26 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<<body>
-글의 상세 내용을 볼수있는 페이지 입니다.
+<body>
+<h2>글의 상세 내용</h2>
 <hr>
+<!-- 모델에서 포스트를 받아옵니다. -->
+<table border="1" th:if="${post != null}">
+    <tr>
+        <td>글 번호</td>
+        <td>제목</td>
+        <td>내용</td>
+        <td>작성시간</td>
+    </tr>
+    <!-- 포스트의 속성을 출력합니다. -->
+    <tr>
+        <td th:text="${post.postNum}"></td>
+        <td th:text="${post.title}"></td>
+        <td th:text="${post.content}"></td>
+        <td th:text="${post.createTime}"></td>
+    </tr>
 
+</table>
+<button onclick="history.back()">뒤로가기</button>
 </body>
 </html>

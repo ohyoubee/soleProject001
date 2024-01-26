@@ -4,13 +4,13 @@ import com.example.soleproject001.dto.PostDTO;
 import com.example.soleproject001.entity.Post;
 import com.example.soleproject001.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -42,9 +42,9 @@ public class PostService {
         // Post 엔터티를 PostDTO로 변환하여 반환
         return postDTO;
     }
-    //PostNum을 찾는 메서드
-//    public Post findById(Integer postNum){
-//        postRepository.findById(postNum);
-//        return postRepository.findById(postNum);
-//    }
+//    PostNum을 찾는 메서드
+    public Optional<Post> findById(Integer postNum){
+        postRepository.findById(postNum);
+        return postRepository.findById(postNum);
+    }
 }
