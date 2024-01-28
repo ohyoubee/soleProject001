@@ -5,6 +5,7 @@ import com.example.soleproject001.entity.Post;
 import com.example.soleproject001.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -42,9 +43,15 @@ public class PostService {
         // Post 엔터티를 PostDTO로 변환하여 반환
         return postDTO;
     }
+
+
 //    PostNum을 찾는 메서드
     public Optional<Post> findById(Integer postNum){
         postRepository.findById(postNum);
         return postRepository.findById(postNum);
+    }
+
+    public void deletePost(Integer postNum){
+        postRepository.deleteById(postNum);
     }
 }

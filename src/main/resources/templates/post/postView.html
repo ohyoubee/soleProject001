@@ -1,3 +1,5 @@
+<!-- postView.html -->
+
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -22,8 +24,14 @@
         <td th:text="${post.content}"></td>
         <td th:text="${post.createTime}"></td>
     </tr>
-
 </table>
+
+<form th:action="@{'/postView/' + ${post.postNum}}" method="post">
+    <button type="submit" onclick="return confirm('정말로 삭제하시겠습니까?')">글 삭제</button>
+</form>
+<button>수정</button>
 <button onclick="history.back()">뒤로가기</button>
+
+
 </body>
 </html>
