@@ -52,7 +52,24 @@ public class PostController {
 
         return "/post/postView";
     }
-
+//    @PostMapping("/postView/{postNum}")
+//    public String postView(){
+//
+//        return "redirect:/postUpdate/{postNum}";
+//    }
+    //글 수정하기
+    @GetMapping("/postUpdate/{postNum}")
+    public String postUpdate(@PathVariable("postNum") Integer postNum,Model model){
+        // postNum에 해당하는 포스트 정보를 찾습니다.
+        Optional<Post> postOptional = postService.findById(postNum);
+        postOptional.ifPresent(post -> model.addAttribute("post", post));
+        return "/post/postUpdate";
+    }
+    @PostMapping("/postUpdate/{postNum}")
+    public String postUpdate(@ModelAttribute PostDTO postDTO){
+        postService.postCreate(postDTO);
+        return "redirect:/postView/{postNum}";
+    }
 
     //글 삭제
     @PostMapping("/postView/{postNum}")

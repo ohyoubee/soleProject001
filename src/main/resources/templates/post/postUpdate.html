@@ -7,13 +7,16 @@
 <body>
 <h1>글 수정</h1>
 <hr>
-<!-- Thymeleaf를 사용하여 post 객체의 데이터를 폼에 미리 채웁니다. -->
-<form th:action="@{/postUpdate/{postNum}(postNum=${post.id})}" method="post">
+
+
+<form th:action="@{'/postUpdate/' + ${post.postNum}}" th:object="${post}" method="post">
+
     <label for="title">제목:</label>
     <input type="text" id="title" name="title" th:value="${post.title}" required><br>
     <label for="content">내용:</label>
     <textarea id="content" name="content" th:text="${post.content}" required></textarea><br>
-    <button type="submit">저장</button>
+    <button type="submit" onclick="return confirm('정말로 수정할겁니까?')">저장</button>
 </form>
+<button onclick="history.back()">뒤로가기</button>
 </body>
 </html>
